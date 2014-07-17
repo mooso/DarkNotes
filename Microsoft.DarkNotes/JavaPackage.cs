@@ -5,7 +5,7 @@ using System.Text;
 using System.Dynamic;
 using System.Globalization;
 
-namespace Microsoft.DarkNotes
+namespace Microsoft.Experimental.DarkNotes
 {
 	internal sealed class JavaPackage : DynamicObject
 	{

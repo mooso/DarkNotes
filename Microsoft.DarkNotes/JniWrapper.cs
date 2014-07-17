@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.DarkNotes.JniInterface;
+using Microsoft.Experimental.DarkNotes.JniInterface;
 using System.Runtime.InteropServices;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using Microsoft.Win32;
-using Microsoft.DarkNotes.CoreClassProxies;
+using Microsoft.Experimental.DarkNotes.CoreClassProxies;
 using System.Threading;
 
-namespace Microsoft.DarkNotes
+namespace Microsoft.Experimental.DarkNotes
 {
 	/// <summary>
 	/// Main wrapper for the low-level JNI functionality.

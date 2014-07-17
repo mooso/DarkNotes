@@ -5,7 +5,7 @@ using System.Text;
 using System.Dynamic;
 using System.Globalization;
 
-namespace Microsoft.DarkNotes
+namespace Microsoft.Experimental.DarkNotes
 {
 	/// <summary>
 	/// The main entry point API for Dark Notes.

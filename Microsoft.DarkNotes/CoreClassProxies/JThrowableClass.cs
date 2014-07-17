@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Microsoft.DarkNotes.CoreClassProxies
+namespace Microsoft.Experimental.DarkNotes.CoreClassProxies
 {
 	/// <summary>
 	/// An incomplete representation of Java's Throwable class.

@@ -9,8 +9,8 @@
     <ProjectGuid>{B3F5E5FC-C5EF-40DF-A4AB-F4CCF37D2534}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.DarkNotes.Tests</RootNamespace>
-    <AssemblyName>Microsoft.DarkNotes.Tests</AssemblyName>
+    <RootNamespace>Microsoft.Experimental.DarkNotes.Tests</RootNamespace>
+    <AssemblyName>Microsoft.Experimental.DarkNotes.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -52,9 +52,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Microsoft.DarkNotes\Microsoft.DarkNotes.csproj">
+    <ProjectReference Include="..\Microsoft.DarkNotes\Microsoft.Experimental.DarkNotes.csproj">
       <Project>{6747E189-BC69-46E2-A306-1A8DE9A6FC19}</Project>
-      <Name>Microsoft.DarkNotes</Name>
+      <Name>Microsoft.Experimental.DarkNotes</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

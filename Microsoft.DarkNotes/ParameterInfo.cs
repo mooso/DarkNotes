@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.DarkNotes.JniInterface;
+using Microsoft.Experimental.DarkNotes.JniInterface;
 
-namespace Microsoft.DarkNotes
+namespace Microsoft.Experimental.DarkNotes
 {
 	internal sealed class ParameterInfo
 	{

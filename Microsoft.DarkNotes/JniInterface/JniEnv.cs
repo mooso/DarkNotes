@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Runtime.InteropServices;
 
-namespace Microsoft.DarkNotes.JniInterface
+namespace Microsoft.Experimental.DarkNotes.JniInterface
 {
 	/// <summary>
 	/// JNI struct for representing most of the actual operations with the Java VM such as finding and invoking methods.

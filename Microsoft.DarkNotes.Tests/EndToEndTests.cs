@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading;
 
-namespace Microsoft.DarkNotes.Tests
+namespace Microsoft.Experimental.DarkNotes.Tests
 {
 	[TestClass]
 	public class EndToEndTests

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Runtime.InteropServices;
 
-namespace Microsoft.DarkNotes.JniInterface
+namespace Microsoft.Experimental.DarkNotes.JniInterface
 {
 	/// <summary>
 	/// JNI struct for representing the higher level operations on the JVM: destroying it, attaching/detaching a thread.

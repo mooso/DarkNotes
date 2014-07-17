@@ -1,9 +1,11 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.DarkNotes", "Microsoft.DarkNotes\Microsoft.DarkNotes.csproj", "{6747E189-BC69-46E2-A306-1A8DE9A6FC19}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Experimental.DarkNotes", "Microsoft.DarkNotes\Microsoft.Experimental.DarkNotes.csproj", "{6747E189-BC69-46E2-A306-1A8DE9A6FC19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.DarkNotes.Tests", "Microsoft.DarkNotes.Tests\Microsoft.DarkNotes.Tests.csproj", "{B3F5E5FC-C5EF-40DF-A4AB-F4CCF37D2534}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Experimental.DarkNotes.Tests", "Microsoft.DarkNotes.Tests\Microsoft.Experimental.DarkNotes.Tests.csproj", "{B3F5E5FC-C5EF-40DF-A4AB-F4CCF37D2534}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Microsoft.DarkNotes.JniInterface
+namespace Microsoft.Experimental.DarkNotes.JniInterface
 {
 	delegate int DestroyJavaVM(IntPtr vm);
 	delegate int AttachCurrentThread(IntPtr vm, IntPtr penv, IntPtr args);

@@ -1,4 +1,4 @@
-﻿namespace Microsoft.DarkNotes.JniInterface
+﻿namespace Microsoft.Experimental.DarkNotes.JniInterface
 {
 	partial struct JniEnv
 	{
