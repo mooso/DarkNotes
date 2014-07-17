@@ -128,52 +128,109 @@ namespace Microsoft.Experimental.DarkNotes
 			return value == IntPtr.Zero ? null : new JavaObject(_vm, value, field.Item2);
 		}
 
+		private class MethodSpeficityInfo : IComparable<MethodSpeficityInfo>
+		{
+			private readonly IntPtr _methodPointer;
+			private readonly bool[] _needBoxing;
+			private readonly JavaType[] _parameterTypes;
+
+			public MethodSpeficityInfo(IntPtr methodPointer, bool[] needBoxing, JavaType[] parameterTypes)
+			{
+				_methodPointer = methodPointer;
+				_needBoxing = needBoxing;
+				_parameterTypes = parameterTypes;
+			}
+
+			public IntPtr MethodPointer
+			{
+				get { return _methodPointer; }
+			}
+
+			public bool[] NeedBoxing
+			{
+				get { return _needBoxing; }
+			}
+
+			public int CompareTo(MethodSpeficityInfo other)
+			{
+				if (_parameterTypes.Any(t => t == null) || other._parameterTypes.Any(t => t == null))
+				{
+					return 0;
+				}
+				// See http://docs.oracle.com/javase/specs/jls/se5.0/html/expressions.html#15.12
+				bool myParamsAllAssignableFromOther = _parameterTypes.Zip(other._parameterTypes, (t1, t2) => t1.IsAssignableFrom(t2)).All(b => b);
+				bool otherParamsAllAssignableFromMine = _parameterTypes.Zip(other._parameterTypes, (t1, t2) => t2.IsAssignableFrom(t1)).All(b => b);
+				if (myParamsAllAssignableFromOther == otherParamsAllAssignableFromMine)
+				{
+					return 0;
+				}
+				else if (myParamsAllAssignableFromOther)
+				{
+					return 1;
+				}
+				else
+				{
+					return -1;
+				}
+			}
+		}
+
 		internal IntPtr GetMethod(string methodName, IEnumerable<JavaType> parameterTypes, out bool[] needBoxing)
 		{
+			List<MethodSpeficityInfo> qualifyingMethods = new List<MethodSpeficityInfo>();
 			foreach (IntPtr m in _allMethods)
 			{
 				string currentMethodName = _methodClass.GetMethodName(m);
 				if (currentMethodName == methodName)
 				{
-					// OK I have a match by name, now I need to do overload resolution...
 					IntPtr[] methodParams = _methodClass.GetParameterTypes(m);
-					if (ParameterTypesMatch(parameterTypes, methodParams, out needBoxing))
+					bool[] methodNeedBoxing;
+					JavaType[] methodParameterInfo;
+					if (ParameterTypesMatch(parameterTypes, methodParams, out methodNeedBoxing, out methodParameterInfo))
 					{
-						return m;
+						qualifyingMethods.Add(new MethodSpeficityInfo(m, methodNeedBoxing, methodParameterInfo));
 					}
 				}
 			}
-			needBoxing = null;
-			return IntPtr.Zero;
+			if (qualifyingMethods.Count == 0)
+			{
+				needBoxing = null;
+				return IntPtr.Zero;
+			}
+			qualifyingMethods.Sort();
+			needBoxing = qualifyingMethods[0].NeedBoxing;
+			return qualifyingMethods[0].MethodPointer;
 		}
 
-		private bool ParameterTypesMatch(IEnumerable<JavaType> actualParameterTypes, IntPtr[] formalParameterTypes, out bool[] needBoxing)
+		private bool ParameterTypesMatch(IEnumerable<JavaType> actualParameterTypes, IntPtr[] formalParameterTypes, out bool[] needBoxing,
+			out JavaType[] formalParameterTypeInfo)
 		{
-			// I do a poor-man's overload resolution below by trying to get a method that:
+			// See http://docs.oracle.com/javase/specs/jls/se5.0/html/expressions.html#15.12
 			// 1. Accepts the same number of parameters as given and
 			// 2. The parameter types are assignable (I forgive unknown parametery types now and just assume they're equivalent to anything).
-			// This is not the high-fidelity algorithm - tracked by Bug 1388.
 
 			if (formalParameterTypes.Length != actualParameterTypes.Count())
 			{
 				needBoxing = null;
+				formalParameterTypeInfo = null;
 				return false;
 			}
 			int currentIndex = 0;
 			needBoxing = new bool[formalParameterTypes.Length];
+			formalParameterTypeInfo = new JavaType[formalParameterTypes.Length];
 			foreach (JavaType actualParameter in actualParameterTypes)
 			{
 				if (actualParameter != null)
 				{
-					JavaType formalParameterType = JavaType.FromReflectedType(_vm, formalParameterTypes[currentIndex]);
-					if (!formalParameterType.IsAssignableFrom(actualParameter))
+					formalParameterTypeInfo[currentIndex] = JavaType.FromReflectedType(_vm, formalParameterTypes[currentIndex]);
+					if (!formalParameterTypeInfo[currentIndex].IsAssignableFrom(actualParameter))
 					{
 						needBoxing = null;
 						return false;
 					}
 					ArrayType formalAsArray, actualAsArray;
-					needBoxing[currentIndex] = (actualParameter is PrimitiveType && !(formalParameterType is PrimitiveType)) ||
-						((actualAsArray = actualParameter as ArrayType) != null && (formalAsArray = formalParameterType as ArrayType) != null &&
+					needBoxing[currentIndex] = (actualParameter is PrimitiveType && !(formalParameterTypeInfo[currentIndex] is PrimitiveType)) ||
+						((actualAsArray = actualParameter as ArrayType) != null && (formalAsArray = formalParameterTypeInfo[currentIndex] as ArrayType) != null &&
 							actualAsArray.MemberType is PrimitiveType && !(formalAsArray.MemberType is PrimitiveType));
 				}
 				else
@@ -187,15 +244,25 @@ namespace Microsoft.Experimental.DarkNotes
 
 		internal IntPtr GetConstructor(IEnumerable<JavaType> parameterTypes, out bool[] needBoxing)
 		{
+			List<MethodSpeficityInfo> qualifyingMethods = new List<MethodSpeficityInfo>();
 			foreach (var c in _allConstructors)
 			{
-				if (ParameterTypesMatch(parameterTypes, _constructorClass.GetParameterTypes(c), out needBoxing))
+				IntPtr[] methodParams = _constructorClass.GetParameterTypes(c);
+				bool[] methodNeedBoxing;
+				JavaType[] methodParameterInfo;
+				if (ParameterTypesMatch(parameterTypes, methodParams, out methodNeedBoxing, out methodParameterInfo))
 				{
-					return c;
+					qualifyingMethods.Add(new MethodSpeficityInfo(c, methodNeedBoxing, methodParameterInfo));
 				}
 			}
-			needBoxing = null;
-			return IntPtr.Zero;
+			if (qualifyingMethods.Count == 0)
+			{
+				needBoxing = null;
+				return IntPtr.Zero;
+			}
+			qualifyingMethods.Sort();
+			needBoxing = qualifyingMethods[0].NeedBoxing;
+			return qualifyingMethods[0].MethodPointer;
 		}
 
 		public dynamic New(params object[] args)
