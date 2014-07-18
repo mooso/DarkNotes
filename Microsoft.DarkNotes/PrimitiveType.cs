@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Collections.ObjectModel;
 
-namespace Microsoft.Experimental.DarkNotes
+namespace DarkNotes
 {
 	internal class PrimitiveType : JavaType
 	{

@@ -5,7 +5,7 @@ using System.Text;
 using System.Runtime.InteropServices;
 using System.Collections.ObjectModel;
 
-namespace Microsoft.Experimental.DarkNotes.JniInterface
+namespace DarkNotes.JniInterface
 {
 	/// <summary>
 	/// JNI struct for representing the arguments for creating the Java VM.

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Microsoft.Experimental.DarkNotes.JniInterface
+namespace DarkNotes.JniInterface
 {
 	partial struct JavaVM
 	{

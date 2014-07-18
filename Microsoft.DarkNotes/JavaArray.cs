@@ -4,7 +4,7 @@ using System.Dynamic;
 using System.Linq;
 using System.Text;
 
-namespace Microsoft.Experimental.DarkNotes
+namespace DarkNotes
 {
 	internal sealed class JavaArray : DynamicObject
 	{

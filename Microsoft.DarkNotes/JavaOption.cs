@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.Experimental.DarkNotes.JniInterface;
+using DarkNotes.JniInterface;
 using System.Globalization;
 
-namespace Microsoft.Experimental.DarkNotes
+namespace DarkNotes
 {
 	/// <summary>
 	/// An option to pass to the Java VM while creating it.

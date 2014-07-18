@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Microsoft.Experimental.DarkNotes.JniInterface
+namespace DarkNotes.JniInterface
 {
 	/// <summary>
 	/// JNI representation of a JVM creation option.

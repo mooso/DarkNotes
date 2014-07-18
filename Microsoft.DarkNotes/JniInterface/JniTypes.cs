@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Runtime.InteropServices;
 
-namespace Microsoft.Experimental.DarkNotes.JniInterface
+namespace DarkNotes.JniInterface
 {
 	[StructLayout(LayoutKind.Sequential)]
 	internal struct JNINativeMethod

@@ -52,9 +52,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Microsoft.DarkNotes\Microsoft.Experimental.DarkNotes.csproj">
+    <ProjectReference Include="..\Microsoft.DarkNotes\DarkNotes.csproj">
       <Project>{6747E189-BC69-46E2-A306-1A8DE9A6FC19}</Project>
-      <Name>Microsoft.Experimental.DarkNotes</Name>
+      <Name>DarkNotes</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

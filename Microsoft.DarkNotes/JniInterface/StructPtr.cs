@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Microsoft.Experimental.DarkNotes.JniInterface
+namespace DarkNotes.JniInterface
 {
 	/// <summary>
 	/// Helper class for creating a pointer to a struct by copying it into HGlobal memory and deallocating that on dispose.

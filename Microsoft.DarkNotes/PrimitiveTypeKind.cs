@@ -1,4 +1,4 @@
-﻿namespace Microsoft.Experimental.DarkNotes
+﻿namespace DarkNotes
 {
 	enum PrimitiveTypeKind
 	{

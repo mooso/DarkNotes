@@ -5,10 +5,10 @@ using System.Dynamic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
-using Microsoft.Experimental.DarkNotes.CoreClassProxies;
-using Microsoft.Experimental.DarkNotes.JniInterface;
+using DarkNotes.CoreClassProxies;
+using DarkNotes.JniInterface;
 
-namespace Microsoft.Experimental.DarkNotes
+namespace DarkNotes
 {
 	/// <summary>
 	/// A dynamic representation of a Java class.

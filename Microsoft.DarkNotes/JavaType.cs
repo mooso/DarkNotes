@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Dynamic;
-using Microsoft.Experimental.DarkNotes.CoreClassProxies;
+using DarkNotes.CoreClassProxies;
 
-namespace Microsoft.Experimental.DarkNotes
+namespace DarkNotes
 {
 	internal abstract class JavaType : DynamicObject
 	{
