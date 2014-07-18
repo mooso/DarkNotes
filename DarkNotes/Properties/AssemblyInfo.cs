@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("DarkNotes")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Dark Notes is a library that uses the Java Native Interface (JNI) to load the Java VM into a .NET process on Windows, and exposes the Java classes and methods in an easy-to-call way using the .NET Dynamic Language Runtime (DLR).")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
 [assembly: AssemblyProduct("DarkNotes")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2012")]
+[assembly: AssemblyCopyright("Copyright © Microsoft 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
