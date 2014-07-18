@@ -8,8 +8,8 @@
     <ProjectGuid>{6747E189-BC69-46E2-A306-1A8DE9A6FC19}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.Experimental.DarkNotes</RootNamespace>
-    <AssemblyName>Microsoft.Experimental.DarkNotes</AssemblyName>
+    <RootNamespace>DarkNotes</RootNamespace>
+    <AssemblyName>DarkNotes</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -76,6 +76,9 @@
     <Compile Include="JniInterface\StructPtr.cs" />
     <Compile Include="ParameterInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DarkNotes.nuspec" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
