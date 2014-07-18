@@ -23,6 +23,7 @@ typically this DLL is 64-bit, so you need to run this in a 64-bit process.
     }
 
 This "Hello world" example shows a few things:
+
 1. How to create the entry point: DarkJava.CreateVm(). You typically want just one invocation
 of that in your application (JNI doesn't respond kindly to attempting to host the JVM multiple
 times in a process). It has overloads that lets you specify additional options to the JVM or
