@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DarkNotes", "Microsoft.DarkNotes\DarkNotes.csproj", "{6747E189-BC69-46E2-A306-1A8DE9A6FC19}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DarkNotes", "DarkNotes\DarkNotes.csproj", "{6747E189-BC69-46E2-A306-1A8DE9A6FC19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DarkNotes.Tests", "Microsoft.DarkNotes.Tests\DarkNotes.Tests.csproj", "{B3F5E5FC-C5EF-40DF-A4AB-F4CCF37D2534}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DarkNotes.Tests", "DarkNotes.Tests\DarkNotes.Tests.csproj", "{B3F5E5FC-C5EF-40DF-A4AB-F4CCF37D2534}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{787BC829-27A2-481F-830A-66EBFE92D264}"
 	ProjectSection(SolutionItems) = preProject
