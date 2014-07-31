@@ -16,9 +16,6 @@ namespace DarkNotes
 	/// <summary>
 	/// Main wrapper for the low-level JNI functionality.
 	/// </summary>
-	/// <remarks>
-	/// This class is exposed publicly today, but once I create a better entry-point API to Dark Notes I'll make this class internal.
-	/// </remarks>
 	internal class JniWrapper : IDisposable
 	{
 		private readonly string _vmDll;
@@ -548,7 +545,8 @@ namespace DarkNotes
 				JThrowableClass throwableClass = new JThrowableClass(this);
 				string exceptionMessage = throwableClass.GetMessage(exception);
 				exceptionMessage = AppendCause(exceptionMessage, exception, throwableClass);
-				throw new JavaException(exceptionType + (String.IsNullOrEmpty(exceptionMessage) ? "" : ": " + exceptionMessage));
+				throw new JavaException(exceptionType + (String.IsNullOrEmpty(exceptionMessage) ? "" : ": " + exceptionMessage),
+					javaStackTrace: throwableClass.GetStackTrace(exception));
 			}
 			return ret;
 		}

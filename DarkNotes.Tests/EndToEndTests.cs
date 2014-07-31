@@ -76,6 +76,8 @@ namespace DarkNotes.Tests
 				catch (JavaException ex)
 				{
 					StringAssert.Contains(ex.Message, "NullPointerException");
+					Assert.AreNotEqual(0, ex.JavaStackTrace.Length);
+					StringAssert.Contains(ex.JavaStackTrace.Last(), "getProperty");
 				}
 			}
 		}
