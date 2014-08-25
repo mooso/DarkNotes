@@ -34,5 +34,10 @@ namespace DarkNotes
 		{
 			get { return _actualOption; }
 		}
+
+		public override string ToString()
+		{
+			return _actualOption.OptionString;
+		}
 	}
 }

@@ -18,5 +18,7 @@ namespace DarkNotes.JniInterface
 			_optionString = optionString;
 			_extraInfo = IntPtr.Zero;
 		}
+
+		public string OptionString { get { return _optionString; } }
 	}
 }
