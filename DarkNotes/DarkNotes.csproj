@@ -56,6 +56,7 @@
     <Compile Include="JavaArray.cs" />
     <Compile Include="JavaClass.cs" />
     <Compile Include="JavaException.cs" />
+    <Compile Include="JavaFinder.cs" />
     <Compile Include="JavaObject.cs" />
     <Compile Include="JavaOption.cs" />
     <Compile Include="JavaPackage.cs" />
