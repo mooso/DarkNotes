@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Dynamic;
@@ -33,8 +33,9 @@ namespace DarkNotes
 		private readonly JClassClass _classClass;
 		private readonly JFieldClass _fieldClass;
 		private readonly JClassLoaderClass _classLoaderClass;
-		private readonly ReadOnlyCollection<IntPtr> _allMethods;
-		private readonly ReadOnlyCollection<IntPtr> _allConstructors;
+        private readonly ReadOnlyCollection<IntPtr> _allMethods;
+        private readonly ReadOnlyCollection<IntPtr> _allConstructors;
+        private readonly ReadOnlyCollection<IntPtr> _allSubClasses;
 
 		/// <summary>
 		/// Constructs the wrapper given the fully qualified class name.
@@ -88,6 +89,8 @@ namespace DarkNotes
 			_name = name.Replace('/', '.');
 			_allMethods = _classClass.GetMethods(_reflectedClass).ToList().AsReadOnly();
 			_allConstructors = _classClass.GetConstructors(_reflectedClass).ToList().AsReadOnly();
+            _allSubClasses = _classClass.getDeclaredClasses(_reflectedClass).ToList().AsReadOnly();
+            
 		}
 
 		public string Name
@@ -107,7 +110,9 @@ namespace DarkNotes
 
 		private Tuple<IntPtr, JavaClass> GetField(string fieldName)
 		{
-			IntPtr reflectedField = _classClass.GetField(_reflectedClass, fieldName);
+			//IntPtr reflectedField = _classClass.GetField(_reflectedClass, fieldName);
+            IntPtr reflectedField = _classClass.getDeclaredField(_reflectedClass, fieldName);
+
 			if (reflectedField == IntPtr.Zero)
 			{
 				return null;
