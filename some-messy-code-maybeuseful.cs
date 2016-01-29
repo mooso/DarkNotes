@@ -41,7 +41,7 @@ private static ClientInteractor clientInteractor;
 
                                     + pathseperator +
 
-                                     new DirectoryInfo(jarsdir + "\\Lib").GetFiles("*.jar", SearchOption.AllDirectories)
+                                     new DirectoryInfo( Path.Combine(jarsdir, "Lib") ).GetFiles("*.jar", SearchOption.AllDirectories)
                                         .Select(x => x.FullName) // map  - converts objects to string
                                         .Aggregate((s, sx) => s + pathseperator + sx); // reduce  - does array.join(":")
     
