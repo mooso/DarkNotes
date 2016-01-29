@@ -77,7 +77,7 @@ import si.SOMEInterface.components.ClientInteractor;
             java.ImportPackage("si.SOMEInterface.SOMEContext");
             java.ImportPackage("si.SOMEInterface.components.ClientInteractor");
             java.ImportPackage("si.core");
-            //java.ImportPackage("si.SOMEEngine.EngineManagerIfc$EngineType");
+            //java.ImportPackage("si.SOMEEngine.EngineManagerIfc$EngineType"); // did not worked
             
                 /*
 	private void initEnv(String titleName, String propFileName) {
@@ -100,7 +100,7 @@ import si.SOMEInterface.components.ClientInteractor;
             //return;
 
                 
-            var EngineType = java.si.SOMEEngine.EngineManagerIfc.@class.getDeclaredClasses()[0];
+            //var EngineType = java.si.SOMEEngine.EngineManagerIfc.@class.getDeclaredClasses()[0];
             //Console.Out.WriteLine(EngineType.getEnumConstants()[0]);
             //return;
 
@@ -165,6 +165,14 @@ import si.SOMEInterface.components.ClientInteractor;
             
     engineManager.getEngine(si.SOMEEngine.EngineManagerIfc.EngineType.ET_SINGLE_TEXT, titleName);
              */
+
+//could not do java.si.SOMEEngine.EngineManagerIfc.EngineType.ET_SINGLE_TEXT
+     //and not java.si.SOMEEngine.EngineManagerIfc$EngineType.ET_SINGLE_TEXT
+     //EngineManagerIfc$EngineType is enum static subclass. so to get it i used getDeclaredClasses to get it:
+     
+     var EngineType = java.si.SOMEEngine.EngineManagerIfc.@class.getDeclaredClasses()[0];
+            //Console.Out.WriteLine(EngineType.getEnumConstants()[0]);
+            //return;
 
             //var EngineType1 = java.si.SOMEEngine.EngineManagerIfc.@class.getDeclaredClasses()[0];
             engineManager = java.si.SOMEEngine.EngineManager.@new();
