@@ -116,8 +116,8 @@ namespace DarkNotes
             guessPathsFromRegistry("SOFTWARE\\JavaSoft\\Java Development Kit", RegistryView.Registry64, javas);
 
             string windir = Environment.GetEnvironmentVariable("WINDIR");
-            javas.Add(new findJavas_item(Path.Combine(windir, "\\system32")));
-            javas.Add(new findJavas_item(Path.Combine(windir, "\\SysWOW64")));
+            javas.Add(new findJavas_item(Path.Combine(windir, "system32")));
+            javas.Add(new findJavas_item(Path.Combine(windir, "SysWOW64")));
 
             string sysJavahome = Environment.GetEnvironmentVariable("JAVA_HOME");
             if (javas.Find(x => x.javahome == sysJavahome) == null)
